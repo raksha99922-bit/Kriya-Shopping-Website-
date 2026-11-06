@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0c0d12">
+  <title>KRIYA | Curated Finds</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="KRIYA home"><span class="brand-mark">K</span><span>KRIYA<span class="brand-dot">.</span></span></a>
+    <nav class="desktop-nav"><a href="#shop">Shop</a><a href="#contact">Contact</a><a href="#about">About</a><button type="button" class="nav-action" data-open-auth="login">Log in</button><button type="button" class="nav-action" data-open-auth="register">Create account</button></nav>
+    <button type="button" class="mobile-account" data-open-auth="login">Account</button>
+    <button class="cart-trigger" id="cartToggle" aria-label="Open shopping cart">
+      <span>Cart</span><span class="cart-icon">▣</span><span class="cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE KRIYA EDIT</p>
+        <h1>Find your<br><em>everyday</em> favorite.</h1>
+        <p class="hero-sub">Thoughtful essentials. Clean design. Little things that make a big difference.</p>
+        <a class="primary-btn" href="#shop">Explore collection <span>↗</span></a>
+      </div>
+      <div class="hero-art" aria-label="Abstract product display">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="hero-disc"></div>
+        <div class="hero-card"><span>NEW<br>ARRIVALS</span><b>01 / 06</b></div>
+        <span class="art-caption">CURATED FOR YOU — 2026</span>
+      </div>
+      <div class="hero-bottom"><span>01 — SIMPLE FINDS</span><span>SCROLL TO DISCOVER ↓</span></div>
+    </section>
+
+    <section class="shop-section" id="shop">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE COLLECTION</p><h2>Shop the essentials<span>.</span></h2></div>
+        <p class="section-note">A few good things, picked just for you.</p>
+      </div>
+      <div class="filter-row">
+        <span>FEATURED PRODUCTS</span><span>06 ITEMS&nbsp; · &nbsp;PRICES IN INR</span>
+        <div class="search-container">
+          <input type="search" id="productSearch" placeholder="Search products by name..." aria-label="Search products by name">
+        </div>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="no-results" id="noResults" role="status" aria-live="polite" hidden>
+        <p>We couldn’t find a match.</p>
+        <span>Try another search to find something you’ll love.</span>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="section-heading">
+        <div><p class="eyebrow">GET IN TOUCH</p><h2>We’re here to help<span>.</span></h2></div>
+        <p class="section-note">Questions or just want to say hello? Send us a note.</p>
+      </div>
+      <form class="validated-form contact-form" id="contactForm" novalidate>
+        <div class="form-field">
+          <label for="contactName">Your name</label>
+          <input id="contactName" name="name" autocomplete="name" required minlength="2" aria-describedby="contactNameError">
+          <small class="field-error" id="contactNameError" hidden></small>
+        </div>
+        <div class="form-field">
+          <label for="contactEmail">Email address</label>
+          <input id="contactEmail" name="email" type="email" autocomplete="email" required aria-describedby="contactEmailError">
+          <small class="field-error" id="contactEmailError" hidden></small>
+        </div>
+        <div class="form-field">
+          <label for="contactSubject">Subject</label>
+          <input id="contactSubject" name="subject" required minlength="3" aria-describedby="contactSubjectError">
+          <small class="field-error" id="contactSubjectError" hidden></small>
+        </div>
+        <div class="form-field">
+          <label for="contactMessage">Your message</label>
+          <textarea id="contactMessage" name="message" rows="5" required minlength="10" aria-describedby="contactMessageError"></textarea>
+          <small class="field-error" id="contactMessageError" hidden></small>
+        </div>
+        <button class="primary-btn form-submit" type="submit">Send message <span>→</span></button>
+        <p class="form-demo-note">Demo form · Messages are not sent</p>
+      </form>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-symbol">K<span>.</span></div>
+      <div><p class="eyebrow">A LITTLE ABOUT US</p><h2>Less noise.<br><em>More good stuff.</em></h2></div>
+      <p class="about-copy">KRIYA is a simple little store built around useful finds and everyday style. Browse, add your favourites, and make this space yours.</p>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">K</span><span>KRIYA<span class="brand-dot">.</span></span></a><span>MADE FOR THE EVERYDAY.</span><span>© 2026 KRIYA</span></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-head"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your cart<span>.</span></h2></div><button class="close-cart" id="closeCart" aria-label="Close cart">×</button></div>
+    <div class="cart-items" id="cartItems"><div class="empty-cart"><span>▢</span><p>Your cart is waiting.</p><small>Add something you love.</small></div></div>
+    <div class="cart-footer">
+      <div class="subtotal"><span>Subtotal</span><strong id="subtotal">₹0</strong></div>
+      <p class="shipping-note">Shipping and taxes calculated at checkout.</p>
+      <button class="checkout-btn" id="checkoutBtn">Continue to checkout <span>→</span></button>
+      <p class="demo-note">Demo store · No payment will be collected</p>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status"></div>
+
+  <dialog class="form-dialog" id="authDialog" aria-labelledby="authDialogTitle">
+    <button class="dialog-close" type="button" data-close-dialog aria-label="Close dialog">×</button>
+    <h2 id="authDialogTitle">Log in<span>.</span></h2>
+    <form class="validated-form dialog-form" id="loginForm" data-auth-form="login" novalidate>
+      <p class="eyebrow">WELCOME BACK</p>
+      <div class="form-field">
+        <label for="loginEmail">Email address</label>
+        <input id="loginEmail" name="email" type="email" autocomplete="email" required aria-describedby="loginEmailError">
+        <small class="field-error" id="loginEmailError" hidden></small>
+      </div>
+      <div class="form-field">
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" name="password" type="password" autocomplete="current-password" required minlength="8" aria-describedby="loginPasswordError">
+        <small class="field-error" id="loginPasswordError" hidden></small>
+      </div>
+      <button class="primary-btn form-submit" type="submit">Log in <span>→</span></button>
+      <p class="form-switch">New here? <button type="button" data-open-auth="register">Create an account</button></p>
+      <p class="form-demo-note">Demo form · Account services are not connected</p>
+    </form>
+    <form class="validated-form dialog-form" id="registerForm" data-auth-form="register" novalidate hidden>
+      <p class="eyebrow">JOIN KRIYA</p>
+      <div class="form-field">
+        <label for="registerName">Your name</label>
+        <input id="registerName" name="name" autocomplete="name" required minlength="2" aria-describedby="registerNameError">
+        <small class="field-error" id="registerNameError" hidden></small>
+      </div>
+      <div class="form-field">
+        <label for="registerEmail">Email address</label>
+        <input id="registerEmail" name="email" type="email" autocomplete="email" required aria-describedby="registerEmailError">
+        <small class="field-error" id="registerEmailError" hidden></small>
+      </div>
+      <div class="form-field">
+        <label for="registerPassword">Password</label>
+        <input id="registerPassword" name="password" type="password" autocomplete="new-password" required minlength="8" aria-describedby="registerPasswordError">
+        <small class="field-error" id="registerPasswordError" hidden></small>
+      </div>
+      <div class="form-field">
+        <label for="registerConfirmPassword">Confirm password</label>
+        <input id="registerConfirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required data-match="registerPassword" aria-describedby="registerConfirmPasswordError">
+        <small class="field-error" id="registerConfirmPasswordError" hidden></small>
+      </div>
+      <button class="primary-btn form-submit" type="submit">Create account <span>→</span></button>
+      <p class="form-switch">Already have an account? <button type="button" data-open-auth="login">Log in</button></p>
+      <p class="form-demo-note">Demo form · Account services are not connected</p>
+    </form>
+  </dialog>
+
+  <dialog class="form-dialog" id="checkoutDialog" aria-labelledby="checkoutDialogTitle">
+    <button class="dialog-close" type="button" data-close-dialog aria-label="Close dialog">×</button>
+    <form class="validated-form dialog-form" id="checkoutForm" novalidate>
+      <p class="eyebrow">DELIVERY DETAILS</p>
+      <h2 id="checkoutDialogTitle">Checkout<span>.</span></h2>
+      <div class="form-field">
+        <label for="checkoutName">Full name</label>
+        <input id="checkoutName" name="name" autocomplete="name" required minlength="2" aria-describedby="checkoutNameError">
+        <small class="field-error" id="checkoutNameError" hidden></small>
+      </div>
+      <div class="form-field">
+        <label for="checkoutEmail">Email address</label>
+        <input id="checkoutEmail" name="email" type="email" autocomplete="email" required aria-describedby="checkoutEmailError">
+        <small class="field-error" id="checkoutEmailError" hidden></small>
+      </div>
+      <div class="form-field">
+        <label for="checkoutPhone">Phone number</label>
+        <input id="checkoutPhone" name="phone" type="tel" autocomplete="tel" required data-format="phone" aria-describedby="checkoutPhoneError">
+        <small class="field-error" id="checkoutPhoneError" hidden></small>
+      </div>
+      <div class="form-field">
+        <label for="checkoutAddress">Street address</label>
+        <input id="checkoutAddress" name="address" autocomplete="street-address" required minlength="5" aria-describedby="checkoutAddressError">
+        <small class="field-error" id="checkoutAddressError" hidden></small>
+      </div>
+      <div class="form-field">
+        <label for="checkoutCity">City</label>
+        <input id="checkoutCity" name="city" autocomplete="address-level2" required minlength="2" aria-describedby="checkoutCityError">
+        <small class="field-error" id="checkoutCityError" hidden></small>
+      </div>
+      <div class="form-field">
+        <label for="checkoutPostalCode">Postal code</label>
+        <input id="checkoutPostalCode" name="postalCode" autocomplete="postal-code" required data-format="postal-code" aria-describedby="checkoutPostalCodeError">
+        <small class="field-error" id="checkoutPostalCodeError" hidden></small>
+      </div>
+      <button class="primary-btn form-submit" type="submit">Continue <span>→</span></button>
+      <p class="form-demo-note">Demo checkout · No payment will be collected</p>
+    </form>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
